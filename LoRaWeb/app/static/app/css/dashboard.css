@@ -15,16 +15,16 @@ canvas {
 input[type=checkbox] {
   visibility: hidden;
 }
-.checkboxDen {
+.checkboxThree {
   width: 160px;
   height: 60px;
   background: #333;
-  margin: 35px 60px 0px 40px;
+  margin: 0px 60px 0px 40px;
   border-radius: 50px;
   position: relative;
 }
 
-.checkboxDen:before {
+.checkboxThree:before {
   content: 'On';
   position: absolute;
   top: 19px;
@@ -33,7 +33,7 @@ input[type=checkbox] {
   color: #26ca28;
   font-size: 16px;
 }
-.checkboxDen:after {
+.checkboxThree:after {
   content: 'Off';
   position: absolute;
   top: 19px;
@@ -42,7 +42,7 @@ input[type=checkbox] {
   color: red;
   font-size: 16px;
 }
-.checkboxDen label {
+.checkboxThree label {
   display: block;
   width: 92px;
   height: 42px;
@@ -60,7 +60,7 @@ input[type=checkbox] {
   background: #ddd;
 }
 
-.checkboxDen input[type=checkbox]:checked + label {
+.checkboxThree input[type=checkbox]:checked + label {
   left: 60px;
   background: #26ca28;
 }
