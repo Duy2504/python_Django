@@ -9,7 +9,6 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	{% comment %} CSS {% endcomment %}
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
@@ -46,7 +45,7 @@
 		}
 	</style>
 
-	<nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #e3f2fd;">
+	<nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #42ea3f;">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="#">IoT</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -92,79 +91,121 @@
 		<br>
 		<h2><b> Dasboard Control </b></h2>
 		<div class="container text-center">
-			<div class="row mb-1">
-				<div id="nhietdo" class="col-4 border border-dark rounded-4 ">
-					<h3 style="margin-top: 10px;">NHIỆT ĐỘ <img src="static/app/images/temperture.png"
-							style="width : 30px;"></h3>
-					<b>
-						<p class="mt-5" style="font-size:20px;" id="temp_value"></p>
-					</b>
-				</div>
+            <div class="row mb-1">
+                <!-- Nhiet Do -->
+                <div id="nhietdo" class="col-3 border border-dark rounded-4">
+                    <h3 style="margin-top: 10px;">
+                        Nhiệt Độ
+                        <img src="static/app/images/temperture.png" style="width: 30px;">
+                    </h3>
+                    <b>
+                        <p class="mt-5" style="font-size: 20px;" id="temp_value" > 11 </p>
+                    </b>
+                </div>
+                <!-- DO AM -->
+                <div id="doam" class="col-3 border border-dark rounded-4 ">
+                    <h3 style="margin-top: 10px;">
+                        Độ Ẩm
+                        <img src="static/app/images/humi.png" style="width: 30px;">
+                    </h3>
+                    <b>
+                        <p class="mt-5" style="font-size: 20px;" id="humi_value"> 20%</p>
+                    </b>
+                </div>
+                <!-- Anh sang -->
+                <div id="anhsang" class="col-3 border border-dark rounded-4">
+                    <h3 style="margin-top: 10px;">
+                        Ánh Sáng
+                        <img src="static/app/images/light.png" style="width: 30px;">
+                    </h3>
+                    <b>
+                        <p class="mt-5" style="font-size: 20px;" id="light_value"> 100 lux</p>
+                    </b>
+                </div>
 
-				<div id="doAm" class="col-4 border border-dark rounded-4 p-0 ">
-					<h3 style="margin-top: 10px;"> ĐỘ ẨM <img src="static/app/images/humidity.png"
-							style="width : 30px;"></h3>
-					<b>
-						<p class="mt-5" style="font-size:20px;" id="humi_value"></p>
-					</b>
-				</div>
+                <!-- Do am dat -->
+                <div id="anhsang" class="col-3 border border-dark rounded-4">
+                    <h3 style="margin-top: 10px;">
+                        Độ Ẩm Đất
+                        <img src="static/app/images/humiSoil.png" style="width: 30px;">
+                    </h3>
+                    <b>
+                        <p class="mt-5" style="font-size: 20px;" id="Soil_value"> 100%</p>
+                    </b>
+                </div>
+            </div>
 
-				<div id="anhSang" class="col-4 border border-dark rounded-4 p-0">
-					<h3 style="font-size:30px; margin-top: 10px;">ÁNH SÁNG <img src="static/app/images/light.png"
-							style="width: 30px;"></h3>
-					<b>
-						<p class="mt-5" style="font-size:20px;" id="light_value"></p>
-					</b>
-				</div>
-			</div>
+            <div class="pt-3 row">
+                <div class="col-8 border border-dark rounded-4 p-0" style="width: 66.6%; height: 20% ;">
+                    <center>
+                        <h3 style="font-size: 30px; margin-top: 10px;">
+                            Chart
+                        </h3>
+                        <canvas class="border rounded" id="myChart" style="width: 100%; opacity: 0; border: #ededed;">
+                            
+                        </canvas>
+                    </center>
+                </div>
 
-			<div class="pt-3 row">
-				<div class="col-8 p-0 border border-dark rounded" style="width:66.6%">
-					<center>
-						<h3 style="font-size:30px; margin-top: 10px;">Biểu đồ dữ liệu</h3>
-						<canvas class="border rounded" id="myChart"
-							style="width:100% ; opacity:0 ;background-color: #ededed;"></canvas>
-					</center>
-				</div>
-				<div class="col-4 p-0 d-flex flex-column">
-					<div id="den" class="flex-fill border border-dark rounded-4 ">
-						<h3 class="mb-4" style="margin-top:20px;"><b>LED</b></h3>
-						<div style="display: flex;">
-							<div class="checkboxThree">
-								<input type="checkbox" onclick="on_off_led()" id="checkboxThreeInput_den" name="" />
-								<label for="checkboxThreeInput_den"></label>
-							</div>
-							<img id="light_img" src="static/app/images/off_light.png" style="width : 30%;">
-						</div>
-					</div>
+                <div class="col-4 p-0 " >
+                    <div id="den" class="flex-fill border border-dark rounded-4 m-lg-1" style="height: 31%;">
+                        <h3 class="mb-4" style="margin-top: 20px;">
+                            <b>
+                                Đèn
+                            </b>
+                        </h3>
+                        <div style="display: flex;">
+                            <div class="checkboxLed">
+                                <input type="checkbox" name="" id="checkBoxInputLed" onclick="on_off_led()">
+                                <label for="checkBoxInputLed"></label>
+                            </div>
+                            <img id="light_img" src="static/app/images/off_light.png" style="width : 22%;">
+                        </div>
+                    </div>
+                    
+                    <div class="pt-2"></div>
 
-					<div class="pt-3 "></div>
-					<div id="pump" class="flex-fill border border-dark rounded-4 mt-0">
-						<h3 class="mb-4" style="margin-top:20px;"><b>PUMP</b></h3>
-						<div style="position: center;">
-							<button type="button" class="btn btn-success" onclick="kiemtra_on_pump()" id="Input_pump"
-								name="">ON</button>
-							<button type="button" class="btn btn-danger" onclick="kiemtra_off_pump()" id="output_pump"
-								name="">OFF</button>
-						</div>
-						<img id="pump_img" src="static/app/images/off_pump.png" style="width :25%;">
-					</div>
-          
-          <div id="Rssi" class="flex-fill border border-dark rounded-4 ">
-						<h3 class="mb-2" style="margin-top:20px;"><b>Rssi</b></h3>
-						<div style="display: flex;">
-							<img id="rssi_img" src="static/app/images/rssi.jpg" style="width : 30%;">
-              <div id = "Vol_Pin" class= "flex-fill border border-dark rounded-4 ">
-                <h3 class = "mb-4" style = "margin-top: 20px;"> <b> Vol_Pin </b> </h3>
-              </div>
-						</div>
-					</div>
+                    <div id="pump" class="flex-fill border border-dark rounded-4 mt-0 m-lg-1" style="height: 31%;">
+                        <h3 class="mt-4" style="margin-top: 20px;">
+                            <b>
+                                Bơm
+                            </b>
+                        </h3>
+                        <div style="display: flex;">
+                            <div class="checkboxPump">
+                                <input type="checkbox" name="" id="checkBoxInputPump" onclick="on_off_pump()">
+                                <label for="checkBoxInputPump"></label>
+                            </div>
+                            <img id="light_img" src="static/app/images/off_pump.png" style="width : 18%;">
+                        </div>
+                    </div>
+
+                    <div class="pt-2"></div>
+
+                    <div class="m-lg-1 row" style="height: 100%;">
+                        <div class=" col-6 border border-dark rounded-4" style="height: 31%; ">
+                            <b>
+                                RSSI
+                            </b>
+                            <b>
+                                <p class="mt-5" style="font-size: 20px;" id="Rssi_value"> -30 dBi</p>
+                            </b>
+                        </div>
+                        <div class=" col-6 border border-dark rounded-4" style="height: 31%;">
+                            <b>
+                                Pin
+                            </b>
+                            <b>
+                                <p class="mt-5" style="font-size: 20px;" id="Pin_value"> 3.7V</p>
+                            </b>
+                        </div>
+                    </div>
 
 
+                </div>
+            </div>
 
-				</div>
-        
-			</div>
+
 		</div>
 		<h1 id="a"></h1>
 	</div>
