@@ -1,0 +1,175 @@
+{% load static %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	{% comment %} CSS {% endcomment %}
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+		integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+		integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+		crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="{% static 'app/css/home.css' %}">
+	<link rel="stylesheet" href="{% static 'app/js/control.js' %}">
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"
+		integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw=="
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+	<title>LoRa Web</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="">
+</head>
+
+<body>
+	<style>
+		body {
+			background-image: url("{% static 'app/images/anhnen.jpg' %}");
+		}
+
+		h2 {
+			text-align: center;
+			color: #f70606;
+		}
+	</style>
+
+	<nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #e3f2fd;">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#">IoT</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+				data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+						<a class="nav-link active" aria-current="page" href="#">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Dasboard</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+							aria-expanded="false">
+							Tính năng
+						</a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="#">Lịch sử</a></li>
+							<li><a class="dropdown-item" href="#">Hẹn giờ</a></li>
+							<li>
+								<hr class="dropdown-divider">
+							</li>
+							<li><a class="dropdown-item" href="#">Đăng xuất</a></li>
+						</ul>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link disabled" aria-disabled="true">Về chúng tôi</a>
+					</li>
+				</ul>
+				<form class="d-flex" role="search">
+					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+					<button class="btn btn-outline-success" type="submit">Search</button>
+				</form>
+			</div>
+		</div>
+	</nav>
+
+	<div id="IOT_dashboard">
+		<br>
+		<h2><b> Dasboard Control </b></h2>
+		<div class="container text-center">
+			<div class="row mb-1">
+				<div id="nhietdo" class="col-4 border border-dark rounded-4 ">
+					<h3 style="margin-top: 10px;">NHIỆT ĐỘ <img src="static/app/images/temperture.png"
+							style="width : 30px;"></h3>
+					<b>
+						<p class="mt-5" style="font-size:20px;" id="temp_value"></p>
+					</b>
+				</div>
+
+				<div id="doAm" class="col-4 border border-dark rounded-4 p-0 ">
+					<h3 style="margin-top: 10px;"> ĐỘ ẨM <img src="static/app/images/humidity.png"
+							style="width : 30px;"></h3>
+					<b>
+						<p class="mt-5" style="font-size:20px;" id="humi_value"></p>
+					</b>
+				</div>
+
+				<div id="anhSang" class="col-4 border border-dark rounded-4 p-0">
+					<h3 style="font-size:30px; margin-top: 10px;">ÁNH SÁNG <img src="static/app/images/light.png"
+							style="width: 30px;"></h3>
+					<b>
+						<p class="mt-5" style="font-size:20px;" id="light_value"></p>
+					</b>
+				</div>
+			</div>
+
+			<div class="pt-3 row">
+				<div class="col-8 p-0 border border-dark rounded" style="width:66.6%">
+					<center>
+						<h3 style="font-size:30px; margin-top: 10px;">Biểu đồ dữ liệu</h3>
+						<canvas class="border rounded" id="myChart"
+							style="width:100% ; opacity:0 ;background-color: #ededed;"></canvas>
+					</center>
+				</div>
+				<div class="col-4 p-0 d-flex flex-column">
+					<div id="den" class="flex-fill border border-dark rounded-4 ">
+						<h3 class="mb-4" style="margin-top:20px;"><b>LED</b></h3>
+						<div style="display: flex;">
+							<div class="checkboxThree">
+								<input type="checkbox" onclick="on_off_led()" id="checkboxThreeInput_den" name="" />
+								<label for="checkboxThreeInput_den"></label>
+							</div>
+							<img id="light_img" src="static/app/images/off_light.png" style="width : 30%;">
+						</div>
+					</div>
+
+					<div class="pt-3 "></div>
+					<div id="pump" class="flex-fill border border-dark rounded-4 mt-0">
+						<h3 class="mb-4" style="margin-top:20px;"><b>PUMP</b></h3>
+						<div style="position: center;">
+							<button type="button" class="btn btn-success" onclick="kiemtra_on_pump()" id="Input_pump"
+								name="">ON</button>
+							<button type="button" class="btn btn-danger" onclick="kiemtra_off_pump()" id="output_pump"
+								name="">OFF</button>
+						</div>
+						<img id="pump_img" src="static/app/images/off_pump.png" style="width :25%;">
+					</div>
+          
+          <div id="Rssi" class="flex-fill border border-dark rounded-4 ">
+						<h3 class="mb-2" style="margin-top:20px;"><b>Rssi</b></h3>
+						<div style="display: flex;">
+							<img id="rssi_img" src="static/app/images/rssi.jpg" style="width : 30%;">
+              <div id = "Vol_Pin" class= "flex-fill border border-dark rounded-4 ">
+                <h3 class = "mb-4" style = "margin-top: 20px;"> <b> Vol_Pin </b> </h3>
+              </div>
+						</div>
+					</div>
+
+
+
+				</div>
+        
+			</div>
+		</div>
+		<h1 id="a"></h1>
+	</div>
+	<script src="" async defer></script>
+</body>
+<script src=" {% static 'app/js/login.js' %}"></script>
+
+</html>
