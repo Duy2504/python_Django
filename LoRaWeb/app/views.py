@@ -8,4 +8,6 @@ def home(request):
 def dashboard(request):
     context={}
     return render(request,'app/dashboard.html',context)
-
+def login(request):
+    context={}
+    return render(request,'app/login.html',context)

@@ -35,7 +35,7 @@
     <!-- Header -->
 	<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="#">IoT</a>
+			<a class="navbar-brand" href="{% url "home" %}">IoT</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 				data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
 				aria-label="Toggle navigation">
@@ -44,10 +44,10 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item">
-						<a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+						<a class="nav-link active" aria-current="page" href="{% url "home" %}">Home</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="{% url 'dashboard' %}">Dasboard</a>
+						<a class="nav-link" href="{% url "dashboard" %}">Dasboard</a>
 					</li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -64,7 +64,7 @@
 						</ul>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link disabled" aria-disabled="true">Về chúng tôi</a>
+						<a class="nav-link disabled" aria-disabled="true">Blog</a>
 					</li>
 				</ul>
 				<form class="d-flex" role="search">
@@ -77,13 +77,7 @@
                     <a class="nav-link" href="#">MyAcount</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Đăng nhập</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Đăng ký</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Thoát</a>
+                    <a class="nav-link" href="{% url 'login' %}">Thoát</a>
                 </li>
             </ul>
 		</div>
@@ -93,9 +87,9 @@
     {% block banner-slider %}{% endblock banner-slider %}
     {% block main-content %}{% endblock main-content %}
     <!-- footer -->
-    <footer class="container--fluid bg-white text-center fixed-bottom p-1 mt-5">
-        copyright 2023
-    </footer>
+	<footer class="container-fluid bg-white text-center p-2" style="position: sticky; bottom: 0;">
+		&copy; 2023@ LeDinhDuy
+	</footer>	
     <script src="" async defer></script>
 </body>
 </html>
