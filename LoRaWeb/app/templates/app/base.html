@@ -47,7 +47,7 @@
 						<a class="nav-link active" aria-current="page" href="{% url "home" %}">Home</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="{% url "dashboard" %}">Dasboard</a>
+						<a class="nav-link" href="{% url "control" %}">Dasboard</a>
 					</li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -55,7 +55,7 @@
 							Tính năng
 						</a>
 						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="#">Lịch sử</a></li>
+							<li><a class="dropdown-item" href="{% url 'history' %}">Lịch sử</a></li>
 							<li><a class="dropdown-item" href="#">Hẹn giờ</a></li>
 							<li>
 								<hr class="dropdown-divider">

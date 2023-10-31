@@ -3,9 +3,9 @@ const socket = io()
 const sttNhietDo = document.getElementById("nhietdo")
 const sttDoAm = document.getElementById("doAm")
 const sttAnhSang = document.getElementById("anhSang")
-const sttden = document.getElementById("den")
-const stttivi = document.getElementById("tivi")
-
+const sttden = document.getElementById("deviceLight")
+const sttPump = document.getElementById("devicePump")
+const sttrem = document.getElementById("rem")
   socket.on("temp",function(data_received){
       let nhietdo = data_received
       document.getElementById("temp_value").innerHTML = nhietdo + "°C"
@@ -100,18 +100,45 @@ const updatee = new Chart("myChart", {
     }
   }
 })
-
+/* control den */
 socket.on("led",function(data_received){
   if(data_received == 1){
     document.getElementById("checkboxThreeInput_den").checked =true
-    document.getElementById("light_img").src='static/app/images/on_light.png'
+    document.getElementById("light-icon").src='static/app/images/icon/light-on.png'
     sttden.style.backgroundColor = "greenyellow";
   } else{
     document.getElementById("checkboxThreeInput_den").checked = false
-    document.getElementById("light_img").src='static/app/images/off_light.png'
+    document.getElementById("light_img").src='static/app/images/icon/light-off.png'
     sttden.style.backgroundColor = "DarkGray";
   }
 })
+/* control pump */
+socket.on("pump",function(data_received){
+  if(data_received == 1){
+    document.getElementById("checkboxThreeInput_Pump").checked =true
+    document.getElementById("pump-icon").src='static/app/images/icon/water-pump-on.png'
+    sttden.style.backgroundColor = "greenyellow";
+  } else{
+    document.getElementById("checkboxThreeInput_den").checked = false
+    document.getElementById("light_img").src='static/app/images/icon/water-pump-off.png'
+    sttden.style.backgroundColor = "DarkGray";
+  }
+})
+/* Control rèm */
+socket.on("rem",function(data_received){
+  if(data_received == 1){
+    document.getElementById("checkboxThreeInput_rem").checked =true
+    document.getElementById("rem-icon").src='static/app/images/icon/rem-mo.png'
+    sttden.style.backgroundColor = "greenyellow";
+  } else{
+    document.getElementById("checkboxThreeInput_den").checked = false
+    document.getElementById("light_img").src='static/app/images/icon/rem-off.png'
+    sttden.style.backgroundColor = "DarkGray";
+  }
+})
+
+
+
 
 socket.on("pump",function(data_received){
   if(data_received == 1){
